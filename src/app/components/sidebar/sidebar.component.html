@@ -1,0 +1,48 @@
+<nav class="sidebar">
+  
+  <a
+    class="sidebar__overview"
+    routerLink="/"
+    routerLinkActive="sidebar__overview--attivo"
+    [routerLinkActiveOptions]="{ exact: true }"
+    (click)="onNavigazione()"
+  >
+    🏠 Overview
+  </a>
+
+  <div class="sidebar__divider"></div>
+
+  <ng-container *ngFor="let gruppo of sportConCategorie$ | async">
+
+    <div class="sidebar__sport-wrapper">
+      <a
+        class="sidebar__sport"
+        [routerLink]="['/sport', gruppo.sport]"
+        routerLinkActive="sidebar__sport--attivo"
+        (click)="onNavigazione()"
+      >
+        <span>{{ getSportIcon(gruppo.sport) }} {{ gruppo.sport }}</span>
+      </a>
+      <button
+        class="sidebar__toggle"
+        (click)="toggleSport(gruppo.sport)"
+        [attr.aria-expanded]="isSportEspanso(gruppo.sport)"
+      >
+        {{ isSportEspanso(gruppo.sport) ? '▾' : '▸' }}
+      </button>
+    </div>
+
+    <div class="sidebar__categorie" [class.sidebar__categorie--visibili]="isSportEspanso(gruppo.sport)">
+      <a
+        class="sidebar__categoria"
+        *ngFor="let cat of gruppo.categorie"
+        [routerLink]="['/categoria', cat]"
+        routerLinkActive="sidebar__categoria--attiva"
+        (click)="onNavigazione()"
+      >
+        {{ cat }}
+      </a>
+    </div>
+  </ng-container>
+</nav>
+

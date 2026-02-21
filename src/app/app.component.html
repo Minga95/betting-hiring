@@ -1,0 +1,33 @@
+
+<header class="app-header">
+  <div class="app-header__inner">
+    <div class="app-header__brand">
+      <span class="app-header__titolo">Angular Betting</span>
+    </div>
+
+    
+    <button class="app-header__hamburger d-md-none" (click)="toggleMenu()" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <div class="app-header__mobile-menu" [class.app-header__mobile-menu--aperto]="menuAperto">
+    <app-sidebar (navigato)="chiudiMenu()"></app-sidebar>
+  </div>
+</header>
+
+
+<div class="app-overlay" [class.app-overlay--visibile]="menuAperto" (click)="chiudiMenu()"></div>
+
+<div class="app-layout">
+ 
+  <aside class="app-sidebar d-none d-md-block">
+    <app-sidebar></app-sidebar>
+  </aside>
+
+  <main class="app-main">
+    <router-outlet></router-outlet>
+  </main>
+</div>

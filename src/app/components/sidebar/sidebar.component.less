@@ -1,0 +1,120 @@
+@accent: #3d5afe;
+@accent-light: #e8ecff;
+@text-main: #1a1f36;
+@text-sub: #5f6685;
+
+.sidebar {
+  padding: 12px 0 24px;
+  font-size: 14px;
+
+  &__overview {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    color: @text-main;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0 20px 20px 0;
+    margin-right: 12px;
+    transition: background 0.15s, color 0.15s;
+
+    &:hover {
+      background: @accent-light;
+      color: @accent;
+      text-decoration: none;
+    }
+
+    &--attivo {
+      background: @accent-light;
+      color: @accent !important;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background: #dde2f0;
+    margin: 10px 16px 14px;
+  }
+
+  
+  &__sport-wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+
+    &:hover {
+      .sidebar__sport {
+        background: @accent-light;
+        color: @accent;
+      }
+    }
+  }
+
+  &__sport {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 16px 9px 20px;
+    color: @text-main;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 0 20px 20px 0;
+    letter-spacing: 0.3px;
+    transition: background 0.15s, color 0.15s;
+
+    &--attivo {
+      color: @accent !important;
+    }
+  }
+
+  &__toggle {
+    background: none;
+    border: none;
+    color: @text-sub;
+    cursor: pointer;
+    padding: 4px 8px;
+    font-size: 13px;
+    line-height: 1;
+    flex-shrink: 0;
+
+    &:hover {
+      color: @accent;
+    }
+  }
+
+  &__categorie {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.25s ease;
+
+    &--visibili {
+      max-height: 400px;
+    }
+  }
+
+  &__categoria {
+    display: block;
+    padding: 7px 16px 7px 44px;
+    color: @text-sub;
+    text-decoration: none;
+    font-size: 12.5px;
+    border-left: 2px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+
+    &:hover {
+      color: @accent;
+      text-decoration: none;
+    }
+
+    &--attiva {
+      color: @accent !important;
+      border-left-color: @accent !important;
+      font-weight: 600;
+      background: @accent-light;
+    }
+  }
+}
+

@@ -1,0 +1,52 @@
+<div class="dettaglio" *ngIf="evento$ | async as evento; else nonTrovato">
+  <div class="dettaglio__card">
+
+    <div class="dettaglio__ribbon" [attr.data-sport]="evento.sport"></div>
+
+    <div class="dettaglio__corpo">
+      <h3 class="dettaglio__titolo">{{ evento.nome }}</h3>
+
+      <div class="dettaglio__info-row">
+        <div class="dettaglio__info-item">
+          <span class="dettaglio__info-label">ID</span>
+          <span class="dettaglio__info-valore">#{{ evento.id }}</span>
+        </div>
+        <div class="dettaglio__info-item">
+          <span class="dettaglio__info-label">Sport</span>
+          <span class="dettaglio__info-valore dettaglio__badge dettaglio__badge--sport">{{ evento.sport }}</span>
+        </div>
+        <div class="dettaglio__info-item">
+          <span class="dettaglio__info-label">Categoria</span>
+          <span class="dettaglio__info-valore dettaglio__badge dettaglio__badge--cat">{{ evento.categoria }}</span>
+        </div>
+      </div>
+
+      <div class="dettaglio__separatore"></div>
+
+      <p class="dettaglio__quote-titolo">Quote</p>
+      <div class="dettaglio__quote">
+        <div class="dettaglio__quota">
+          <span class="dettaglio__quota-label">1 — Casa</span>
+          <span class="dettaglio__quota-valore">{{ evento.quote.home }}</span>
+        </div>
+        <div *ngIf="evento.quote.draw" class="dettaglio__quota">
+          <span class="dettaglio__quota-label">X — Pareggio</span>
+          <span class="dettaglio__quota-valore">{{ evento.quote.draw }}</span>
+        </div>
+        <div class="dettaglio__quota">
+          <span class="dettaglio__quota-label">2 — Ospite</span>
+          <span class="dettaglio__quota-valore">{{ evento.quote.away }}</span>
+        </div>
+      </div>
+
+      <div class="dettaglio__footer">
+        <a routerLink="/" class="dettaglio__back">← Torna alla home</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<ng-template #nonTrovato>
+  <p class="text-muted text-center py-5">Evento non trovato.</p>
+</ng-template>

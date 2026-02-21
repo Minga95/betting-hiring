@@ -1,0 +1,29 @@
+<div class="evento-card" [routerLink]="['/evento', evento.id]">
+
+  <div class="evento-card__ribbon" [attr.data-sport]="evento.sport"></div>
+
+  <div class="evento-card__body">
+    <h6 class="evento-card__titolo">{{ evento.nome }}</h6>
+
+    <div class="evento-card__tags">
+      <span class="evento-card__tag evento-card__tag--sport">{{ evento.sport }}</span>
+      <span class="evento-card__tag evento-card__tag--cat">{{ evento.categoria }}</span>
+    </div>
+
+    <div class="evento-card__quote">
+      <div class="evento-card__quota">
+        <span class="evento-card__quota-label">1</span>
+        <span class="evento-card__quota-valore">{{ evento.quote.home }}</span>
+      </div>
+      <div *ngIf="evento.quote.draw" class="evento-card__quota">
+        <span class="evento-card__quota-label">X</span>
+        <span class="evento-card__quota-valore">{{ evento.quote.draw }}</span>
+      </div>
+      <div class="evento-card__quota">
+        <span class="evento-card__quota-label">2</span>
+        <span class="evento-card__quota-valore">{{ evento.quote.away }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+

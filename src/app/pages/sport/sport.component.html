@@ -1,0 +1,14 @@
+<div>
+  <div class="pagina-header mb-4">
+    <h4 class="pagina-header__titolo">{{ nomeSport$ | async }}</h4>
+  </div>
+
+  <div class="row g-3">
+    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let evento of eventi$ | async">
+      <app-event-card [evento]="evento"></app-event-card>
+    </div>
+    <div class="col-12" *ngIf="(eventi$ | async)?.length === 0">
+      <p class="text-muted">Nessun evento trovato per questo sport.</p>
+    </div>
+  </div>
+</div>

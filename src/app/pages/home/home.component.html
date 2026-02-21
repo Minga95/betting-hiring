@@ -1,0 +1,18 @@
+<div class="home">
+  <div *ngIf="caricamento$ | async" class="text-center py-5">
+    <div class="spinner-border" style="color: #3d5afe;" role="status">
+      <span class="visually-hidden">Caricamento...</span>
+    </div>
+    <p class="mt-2 text-muted">Caricamento eventi...</p>
+  </div>
+
+  <div class="row g-3" *ngIf="!(caricamento$ | async)">
+    <div class="col-12 col-sm-6 col-lg-4" *ngFor="let evento of eventi$ | async">
+      <app-event-card [evento]="evento"></app-event-card>
+    </div>
+
+    <div class="col-12" *ngIf="(eventi$ | async)?.length === 0">
+      <p class="text-muted text-center py-5">Nessun evento disponibile.</p>
+    </div>
+  </div>
+</div>
